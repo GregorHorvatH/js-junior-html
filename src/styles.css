@@ -42,10 +42,18 @@ form {
   box-shadow: 0 0 10px rgb(166, 166, 166);
 }
 
+.input-wrapper {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
 input.input {
   padding: 20px;
   background-color: rgb(233, 233, 233);
   border: none;
+  flex: 1;
 }
 
 button {
@@ -87,4 +95,20 @@ button {
 
 .visible {
   display: block;
+}
+
+.icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.blue {
+  color: rgb(158, 158, 238);
+  font-size: 32px;
+}
+
+.red {
+  color: rgb(236, 146, 146);
+  font-size: 32px;
 }

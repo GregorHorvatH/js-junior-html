@@ -23,6 +23,7 @@ const form = document.querySelector('.form');
 function handleSubmit(e) {
   const login = e.target.elements.login.value;
   const password = e.target.elements.password.value;
+  const myRadioGroup = e.target.elements.myRadioGroup.value;
 
   e.preventDefault();
 
@@ -30,6 +31,7 @@ function handleSubmit(e) {
     console.log('submit form');
     console.log('login:', login);
     console.log('password:', password);
+    console.log('myRadioGroup:', myRadioGroup);
 
     myButton.classList.toggle('visible');
   } else {
