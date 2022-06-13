@@ -48,10 +48,6 @@ input.input {
   border: none;
 }
 
-input.other {
-  background-color: aliceblue;
-}
-
 button {
   padding: 20px;
   background-color: orange;
@@ -73,4 +69,22 @@ button {
 .orange-text {
   color: orange;
   cursor: pointer;
+}
+
+.my-button {
+  cursor: pointer;
+  display: none;
+}
+
+.my-button:hover {
+  background-color: bisque;
+  color: #000;
+}
+
+.my-button:active {
+  background-color: rgb(198, 175, 148);
+}
+
+.visible {
+  display: block;
 }
