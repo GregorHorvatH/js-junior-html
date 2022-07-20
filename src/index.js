@@ -155,3 +155,29 @@
 // console.log(calAverage(1, 2, 3, 4)); // 2.5
 // console.log(calAverage(14, 8, 2)); // 8
 // console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
+
+// ---- const, let, var, function ----
+// fn();
+
+// function fn() {
+//   console.log('hello');
+// }
+
+// let fn = function () {
+//   console.log('hello');
+// };
+
+// fn();
+
+// console.log(x); // undefined
+
+// var x = 1;
+// console.log(x); // 1
+
+// console.log([1, 2, 3]);
+
+// function fn() {
+//   console.log(arguments);
+// }
+
+// fn(1, 2, 3);
