@@ -1,183 +1,249 @@
-// console.log('module 02.2');
+console.log('module 03.1');
 
-// ----- default values ------
-// function sum(a = 0, b = 0) {
-//   return a + b;
+// const arr = [
+//   {
+//     name: 'Bobby',
+//     age: 15,
+//   },
+//   {
+//     name: 'Peter',
+//     age: 20,
+//   },
+//   {
+//     name: 'Chris',
+//     age: 22,
+//   },
+// ];
+
+// console.log(arr);
+// console.table(arr);
+
+// const key = 'age';
+// const obj = {
+//   name: 'Bobby',
+//   age: 15,
+// };
+
+// obj.eye = 'blue';
+// obj['sdfsf'] = '3456789';
+
+// obj[key] = 20;
+// console.log(obj[key]);
+// console.log(obj);
+
+// ---- this ----
+// const obj = {
+//   name: 'Bobby',
+//   age: 15,
+
+//   sayHello() {
+//     console.log(`Hello my name is ${this.name}`);
+//   },
+
+//   birthday() {
+//     this.age += 1;
+//   },
+// };
+
+// obj.sayHello();
+
+// console.log(obj.age);
+// obj.birthday();
+// console.log(obj.age);
+
+// -------------------------------------------
+// Example 1 - Основы обьектов
+// Напиши скрипт, который, для объекта user, последовательно:
+
+// добавляет поле mood со значением 'happy'
+// заменяет значение hobby на 'skydiving'
+// заменяет значение premium на false
+// выводит содержимое объекта user в формате ключ:значение используя Object.keys() и for...of
+
+// const user = {
+//   name: 'Mango',
+//   age: 20,
+//   hobby: 'html',
+//   premium: true,
+// };
+
+// user.mood = 'happy';
+// user.hobby = 'skydiving';
+// user.premium = false;
+
+// const keys = Object.keys(user);
+
+// for (const key of keys) {
+//   console.log(key, user[key]);
 // }
 
-// console.log(sum(1, 1));
-// console.log(sum(10, 12));
-// console.log(sum(100, 23));
-// console.log(sum(100));
-// console.log(sum());
+// console.table(user);
 
-// ----- arguments ------
-// function sum() {
-//   if (arguments.length === 0) return 0;
+// -------------------------------------------
+// Example 2 - метод Object.values()
+// У нас есть объект, в котором хранятся зарплаты нашей команды.
+// Напишите код для суммирования всех зарплат и сохраните результат в переменной sum.
+// Должно получиться 390. Если объект salaries пуст, то результат должен быть 0.
 
-//   let res = 0;
+// const salaries = {
+//   John: 100,
+//   Ann: 160,
+//   Pete: 130,
+//   Bobby: 110,
+// };
+// const values = Object.values(salaries);
+// let sum = 0;
 
-//   for (const item of arguments) {
-//     res += item;
-//   }
-
-//   return res;
+// for (const value of values) {
+//   sum += value;
 // }
 
-// console.log(sum(1, 10)); // 11
-// console.log(sum(1, 1, 1, 1, 1, 1, 4)); // 10
-// console.log(sum(5)); // 5
-// console.log(sum()); // 0
+// console.log(sum);
 
-// =================================
-// Example 1 - Индекс массы тела
-// Напиши функцию calcBMI(weight, height) которая рассчитывает и возвращает индекс массы тела человека. Для этого необходимо разделить вес в киллограммах на квадрат высоты человека в метрах.
-// Вес и высота будут специально переданы как строки. Нецелые числа могут быть заданы в виде 24.7 или 24,7, то есть в качестве разделителя дробной части может быть запятая.
-// Индекс массы тела необходимо округлить до одной цифры после запятой;
+// -------------------------------------------
+// Example 3 - Массив объектов
+// Напишите ф-цию calcTotalPrice(stones, stoneName), которая принимает массив обьектов и строку с названием камня. Ф-ция считает и возвращает общую стоимость камней с таким именем, ценой и количеством из обьекта
 
-// function calcBMI(weight, height) {
-//   const weightNum = parseFloat(weight);
-//   const heightNum = parseFloat(height);
-//   const index = weightNum / Math.pow(heightNum, 2);
+// const stones = [
+//   { name: 'Изумруд', price: 1300, quantity: 4 }, // 5200
+//   { name: 'Бриллиант', price: 2700, quantity: 3 }, // 8100
+//   { name: 'Сапфир', price: 400, quantity: 7 }, // 2800
+//   { name: 'Щебень', price: 200, quantity: 2 }, // 400
+// ];
 
-//   return parseFloat(index.toFixed(2));
-// }
+// const calcTotalPrice = (stones, stoneName) => {
+//   for (const stone of stones) {
+//     if (stone.name === stoneName) {
+//       const result = stone.price * stone.quantity;
 
-// console.log(calcBMI('88.3', '1.75')); // 28.8
-// console.log(calcBMI('72', '1.78')); // 22.72
-// console.log(calcBMI('65', '1.78')); // 20.52
-
-// =================================
-// Example 2 - Меньшее из чисел
-// Напиши функцию min(a,b), которая возвращает меньшее из чисел a и b.
-
-// function min(a, b) {
-//   // if (a < b) return a;
-//   // if (b < a) return b;
-
-//   // return a;
-
-//   return a < b ? a : b;
-// }
-
-// console.log(min(2, 5)); // 2
-// console.log(min(3, -1)); // -1
-// console.log(min(1, 1)); // 1
-
-// =================================
-// Example 3 - Площадь прямоугольника
-// Напиши функцию getRectArea(dimensions) для вычисления площади прямоугольника со сторонами, значения которых будут переданы в параметр dimensions в виде строки. Значения гарантированно разделены пробелом.
-
-// function getRectArea(dimensions) {
-//   const items = dimensions.split(' ');
-//   // const a = items[0];
-//   // const b = items[1];
-//   const [a, b] = items;
-
-//   const numA = parseInt(a);
-//   const numB = parseInt(b);
-
-//   return numA * numB;
-// }
-
-// console.log(getRectArea('8 11'));
-
-// =================================
-// Example 4 - Логирование элементов
-// Напиши функцию logItems(items), которая получает массив и использует цикл for, который для каждого элемента массива будет выводить в консоль сообщение в формате <номер элемента> - <значение элемента>. Нумерация элементов должна начинаться с 1.
-// Например для первого элемента массива ['Mango', 'Poly', 'Ajax'] с индексом 0 будет выведено 1 - Mango, а для индекса 2 выведет 3 - Ajax.
-
-// function logItems(items) {
-//   for (let i = 0; i < items.length; i += 1) {
-//     console.log(`${i + 1} - ${items[i]}`);
-//   }
-// }
-
-// logItems(['Mango', 'Poly', 'Ajax']);
-// logItems(['🍎', '🍇', '🍑', '🍌', '🍋']);
-
-// =================================
-// Example 5 - Логирование контактов
-// Напиши функцию printContactsInfo(names, phones) которая выводит в консоль имя и телефонный номер пользователя. В параметры names и phones будут переданы строки имен и телефонных номеров, разделенные запятыми. Порядковый номер имен и телефонов в строках указывают на соответствие. Количество имен и телефонов гарантированно одинаковое.
-
-// function printContactsInfo(names, phones) {
-//   const namesArr = names.split(',');
-//   const phonesArr = phones.split(',');
-
-//   for (let i = 0; i < namesArr.length; i += 1) {
-//     console.log(`${namesArr[i]}: ${phonesArr[i]}`);
-//   }
-// }
-
-// printContactsInfo(
-//   'Jacob,William,Solomon,Artemis',
-//   '89001234567,89001112233,890055566377,890055566300'
-// );
-
-// ----- template text ------
-// const nandorAge = 16;
-// console.log(`Nandor is ${nandorAge} years old`);
-
-// =================================
-// Example 6 - Поиск наибольшего элемента
-// Напиши функцию findLargestNumber(numbers)которая ищет самое большое число в массиве.
-
-// function findLargestNumber(numbers) {
-//   let max = numbers[0];
-
-//   for (const number of numbers) {
-//     if (number > max) {
-//       max = number;
+//       return result;
 //     }
 //   }
 
-//   return max;
-// }
-
-// console.log(findLargestNumber([2, 17, 94, 1, 23, 37])); // 94
-// console.log(findLargestNumber([49, 4, 7, 83, 12])); // 83
-// console.log(findLargestNumber([-3, -5, -20, -1, -88])); // -1
-
-// =================================
-// Example 7 - Среднее значение
-// Напишите функцию calAverage() которая принимает произвольное кол-во аргументов и возвращает их среднее значение. Все аругменты будут только числами.
-
-// function calAverage() {
-//   let sum = 0;
-
-//   for (const number of arguments) {
-//     sum += number;
-//   }
-
-//   return sum / arguments.length;
-// }
-
-// console.log(calAverage(1, 2, 3, 4)); // 2.5
-// console.log(calAverage(14, 8, 2)); // 8
-// console.log(calAverage(27, 43, 2, 8, 36)); // 23.2
-
-// ---- const, let, var, function ----
-// fn();
-
-// function fn() {
-//   console.log('hello');
-// }
-
-// let fn = function () {
-//   console.log('hello');
+//   return 0;
 // };
 
-// fn();
+// console.log(calcTotalPrice(stones, 'Изумруд'));
+// console.log(calcTotalPrice(stones, 'Бриллиант'));
+// console.log(calcTotalPrice(stones, 'Сапфир'));
+// console.log(calcTotalPrice(stones, 'Щебень'));
 
-// console.log(x); // undefined
+// -------------------------------------------
+// Example 4 - Комплексные задачи
+// Напиши скрипт управления личным кабинетом интернет банка. Есть объект account в котором необходимо реализовать методы для работы с балансом и историей транзакций.
 
-// var x = 1;
-// console.log(x); // 1
+/*
+ * Типов транзацкий всего два.
+ * Можно положить либо снять деньги со счета.
+ */
+const Transaction = {
+  DEPOSIT: 'deposit',
+  WITHDRAW: 'withdraw',
+};
 
-// console.log([1, 2, 3]);
+/*
+ * Каждая транзакция это объект со свойствами: id, type и amount
+ */
 
-// function fn() {
-//   console.log(arguments);
-// }
+const account = {
+  // Текущий баланс счета
+  balance: 0,
 
-// fn(1, 2, 3);
+  // История транзакций
+  transactions: [],
+
+  /*
+   * Метод создает и возвращает объект транзакции.
+   * Принимает сумму и тип транзакции.
+   */
+  createTransaction(amount, type) {
+    this.transactions.push({
+      id: this.transactions.length + 1,
+      amount,
+      type,
+    });
+  },
+
+  /*
+   * Метод отвечающий за добавление суммы к балансу.
+   * Принимает сумму танзакции.
+   * Вызывает createTransaction для создания объекта транзакции
+   * после чего добавляет его в историю транзакций
+   */
+  deposit(amount) {
+    this.balance += amount;
+    this.createTransaction(amount, Transaction.DEPOSIT);
+  },
+
+  /*
+   * Метод отвечающий за снятие суммы с баланса.
+   * Принимает сумму танзакции.
+   * Вызывает createTransaction для создания объекта транзакции
+   * после чего добавляет его в историю транзакций.
+   *
+   * Если amount больше чем текущий баланс, выводи сообщение
+   * о том, что снятие такой суммы не возможно, недостаточно средств.
+   */
+  withdraw(amount) {
+    if (amount > this.balance) {
+      console.error('no money, no honey');
+      return;
+    }
+
+    this.balance -= amount;
+    this.createTransaction(amount, Transaction.WITHDRAW);
+  },
+
+  /*
+   * Метод возвращает текущий баланс
+   */
+  getBalance() {
+    return this.balance;
+  },
+
+  /*
+   * Метод ищет и возвращает объект транзации по id
+   */
+  getTransactionDetails(id) {
+    for (const transaction of this.transactions) {
+      if (transaction.id === id) {
+        return transaction;
+      }
+    }
+  },
+
+  /*
+   * Метод возвращает количество средств
+   * определенного типа транзакции из всей истории транзакций
+   */
+  getTransactionTotal(type) {
+    let sum = 0;
+
+    for (const transaction of this.transactions) {
+      if (transaction.type === type) {
+        sum += transaction.amount;
+      }
+    }
+
+    return sum;
+  },
+};
+
+console.log(account.getBalance());
+
+account.deposit(1000);
+console.log(account.getBalance());
+
+account.withdraw(300);
+console.log(account.getBalance());
+
+account.withdraw(600);
+console.log(account.getBalance());
+
+account.withdraw(200);
+console.log(account.getBalance());
+
+// console.table(account.transactions);
+console.log(account.getTransactionDetails(3));
+console.log(account.getTransactionTotal(Transaction.DEPOSIT));
+console.log(account.getTransactionTotal(Transaction.WITHDRAW));
