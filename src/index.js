@@ -1,114 +1,222 @@
-console.log('module 03.2');
+console.log('module 04.2');
 
-// const products = [
-//   { name: 'Радар', price: 1300, quantity: 4 },
-//   { name: 'Сканер', price: 2700, quantity: 3 },
-//   { name: 'Дроїд', price: 400, quantity: 7 },
-//   { name: 'Захоплення', price: 1200, quantity: 2 },
-// ];
-
-// const getAllPropValues = function (arr, prop) {
-//   const result = [];
-
-//   for (const obj of arr) {
-//     if (prop in obj) {
-//       result.push(obj[prop]);
-//     }
-//   }
-
-//   return result;
-// };
-
-// /*
-//  * Викличи функції для перевірки працездатності твоєї реалізації.
-//  */
-// console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроїд', 'Захоплення']
-
-// console.log(getAllPropValues(products, 'quantity')); // [4, 3, 7, 2]
-
-// console.log(getAllPropValues(products, 'category')); // []
-
-// ----- callback function ------
-// function fn1(callback) {
-//   console.log('hello');
-
-//   callback();
-// }
-
-// function fn2() {
-//   console.log('world');
-// }
-
-// function fn3() {
-//   console.log('Nandor');
-// }
-
-// fn1(fn2);
-// fn1(fn3);
-
-// ------ map -------
+// ---- map ----
 // const numbers = [1, 2, 3];
 
-// const map = (arr, callback) => {
-//   const res = [];
+// console.log(numbers.map((item) => item * 2));
+// console.log(numbers.map((item) => item * 3));
+// console.log(numbers.map((item) => `<div>${item}</div>`));
 
-//   arr.forEach((item) => {
-//     res.push(callback(item));
-//   });
-
-//   return res;
-// };
-
-// console.log(map(numbers, (number) => number * 2)); // [2, 4, 6]
-// console.log(map(numbers, (number) => number * 3)); // [3, 6, 9]
-// console.log(map(numbers, (number) => number * 4)); // [4, 8, 12]
-// console.log(map(numbers, (item) => item * 10)); // [10, 20, 30]
-
-// console.log(map(['Bobby', 'Peter', 'Chris'], (name) => name.toUpperCase()));
-// console.log(map(['Bobby', 'Peter', 'Chris'], (name) => name.toLowerCase()));
-
-// ------ filter -------
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-// const filter = (items, callback) => {
-//   const res = [];
-
-//   items.forEach((item) => {
-//     if (callback(item)) {
-//       res.push(item);
-//     }
-//   });
-
-//   return res;
-// };
-
-// console.log(filter(numbers, (number) => number < 4));
-// console.log(filter(numbers, (number) => number > 5));
-// console.log(filter(numbers, (number) => number > 4 && number < 8));
-
-// console.log(filter(['Bobby', 'Peter', 'Chris'], (name) => name.includes('e')));
-// console.log(
-//   filter(['Bobby', 'Peter', 'Chris', 'Elemer'], (name) => name.includes('e'))
-// );
-
-// ----- find -----
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// const users = [
-//   { name: 'Bobby', age: 12, eye: 'blue' },
-//   { name: 'Chris', age: 20, eye: 'brown' },
-//   { name: 'Peter', age: 25, eye: 'green' },
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Полі', score: 59 },
+//   { name: 'Аякс', score: 37 },
+//   { name: 'Ківі', score: 94 },
+//   { name: "Х'юстон", score: 64 },
 // ];
 
-// const find = (items, callback) => {
-//   for (const item of items) {
-//     if (callback(item)) return item;
+// console.log(students.map((item) => item.name));
+// console.log(students.map((item) => item.score));
+
+// ---- flatMap -----
+// const arr = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ];
+
+// console.log(arr.flatMap((item) => item));
+
+// ---- filter -----
+// const values = [51, -3, 27, 21, -68, 42, -37];
+
+// console.log(values.filter((item) => item > 0));
+// console.log(values.filter((item) => item < 0));
+
+// ----- find -----
+// const values = [51, -3, 27, 21, -68, 42, -37];
+
+// console.log(values.find((item) => item > 0));
+// console.log(values.find((item) => item < 0));
+// console.log(values.find((item) => item > 100)); // undefined
+
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Полі', score: 59 },
+//   { name: 'Аякс', score: 37 },
+//   { name: 'Ківі', score: 94 },
+//   { name: "Х'юстон", score: 64 },
+// ];
+
+// console.log(students.find((student) => student.score === 94));
+
+// ----- findIndex -----
+// const values = [51, -3, 27, 21, -68, 42, -37];
+
+// console.log(values.findIndex((item) => item > 20)); // 0
+// console.log(values.findIndex((item) => item < -10)); // 4
+
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Полі', score: 59 },
+//   { name: 'Аякс', score: 37 }, // 2
+//   { name: 'Ківі', score: 94 },
+//   { name: "Х'юстон", score: 64 }, // 4
+// ];
+
+// console.log(students.findIndex((student) => student.name === 'Аякс'));
+// console.log(students.findIndex((student) => student.score === 64));
+
+// ----- every -----
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Полі', score: 59 },
+//   { name: 'Аякс', score: 37 },
+//   { name: 'Ківі', score: 94 },
+//   { name: "Х'юстон", score: 64 },
+// ];
+
+// console.log(students.every((student) => student.score > 10));
+// console.log(students.every((student) => student.score > 30));
+// console.log(students.every((student) => student.score > 50));
+
+// ----- some -----
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Полі', score: 59 },
+//   { name: 'Аякс', score: 37 },
+//   { name: 'Ківі', score: 94 },
+//   { name: "Х'юстон", score: 64 },
+// ];
+
+// console.log(students.some((student) => student.score > 10));
+// console.log(students.some((student) => student.score > 30));
+// console.log(students.some((student) => student.score > 50));
+// console.log(students.some((student) => student.score > 95));
+
+// ----- reduce -----
+// const numbers = [2, 7, 3, 14, 6];
+
+// const sum = numbers.reduce((acc, value) => {
+//   acc += value;
+
+//   return acc;
+// }, 0);
+// console.log(sum);
+
+// const min = numbers.reduce((acc, value) => {
+//   if (value < acc) {
+//     acc = value;
 //   }
-// };
 
-// console.log(find(numbers, (number) => number > 4));
-// console.log(find(numbers, (number) => number === 6));
-// console.log(find(numbers, (number) => number === 12));
+//   return acc;
+// });
+// console.log(min);
 
-// console.log(find(users, (user) => user.name === 'Bobby'));
-// console.log(find(users, (user) => user.eye === 'green'));
-// console.log(find(users, (user) => user.dgdf === 'dfgfg'));
+// const max = numbers.reduce((acc, value) => {
+//   if (value > acc) {
+//     acc = value;
+//   }
+
+//   return acc;
+// });
+// console.log(max);
+
+// const students = [
+//   { name: 'Манго', score: 83 },
+//   { name: 'Полі', score: 59 },
+//   { name: 'Аякс', score: 37 },
+//   { name: 'Ківі', score: 94 },
+//   { name: "Х'юстон", score: 64 },
+// ];
+
+// const scoreSum = students.reduce((acc, student) => {
+//   acc += student.score;
+
+//   return acc;
+// }, 0);
+// console.log(scoreSum);
+
+// // sum
+// let sum = 0;
+// numbers.forEach((value) => (sum += value));
+// console.log(sum);
+
+// // min
+// let min = numbers[0];
+
+// numbers.forEach((value) => {
+//   if (value < min) {
+//     min = value;
+//   }
+// });
+
+// console.log(min);
+
+// // max
+// let max = numbers[0];
+
+// numbers.forEach((value) => {
+//   if (value > max) {
+//     max = value;
+//   }
+// });
+
+// console.log(max);
+
+// ----- sort -----
+// const numbers = [3, 1, 12, 4, 2, 5, 10, 6, 0, 8, 20, 7, 11, 30, 9];
+// numbers.sort((a, b) => b - a);
+
+// console.log(numbers);
+
+// const names = [
+//   { name: 'Bobby', age: 20 },
+//   { name: 'Andris', age: 13 },
+//   { name: 'Nandor', age: 16 },
+// ];
+
+// names.sort((a, b) => a.name.localeCompare(b.name));
+
+// console.log(names);
+
+// ----- chaining -----
+// const names = [
+//   { name: 'Bobby', age: 20 },
+//   { name: 'Andris', age: 13 },
+//   { name: 'Nandor', age: 16 },
+//   { name: 'Ándris', age: 13 },
+//   { name: 'apple', age: 13 },
+//   { name: 'ape', age: 13 },
+//   { name: 'Cecil', age: 13 },
+//   { name: 'Csaba', age: 13 },
+// ]
+//   .sort((a, b) => a.name.localeCompare(b.name))
+//   .map((user) => user.name)
+//   .reverse()
+//   .join(', ');
+
+// console.log(names);
+
+// ----- map ------
+const users = [
+  { name: 'Bobby', age: 20 },
+  { name: 'Andris', age: 13 },
+  { name: 'Nandor', age: 16 },
+  { name: 'Ándris', age: 13 },
+  { name: 'apple', age: 13 },
+  { name: 'ape', age: 13 },
+  { name: 'Cecil', age: 13 },
+  { name: 'Csaba', age: 13 },
+];
+
+const updatedAges = users.map((user) => {
+  const newUser = {
+    ...user,
+    age: user.age + 1,
+  };
+
+  return newUser;
+});
+
+console.log(updatedAges);
