@@ -1,249 +1,114 @@
-console.log('module 03.1');
+console.log('module 03.2');
 
-// const arr = [
-//   {
-//     name: 'Bobby',
-//     age: 15,
-//   },
-//   {
-//     name: 'Peter',
-//     age: 20,
-//   },
-//   {
-//     name: 'Chris',
-//     age: 22,
-//   },
+// const products = [
+//   { name: 'Радар', price: 1300, quantity: 4 },
+//   { name: 'Сканер', price: 2700, quantity: 3 },
+//   { name: 'Дроїд', price: 400, quantity: 7 },
+//   { name: 'Захоплення', price: 1200, quantity: 2 },
 // ];
 
-// console.log(arr);
-// console.table(arr);
+// const getAllPropValues = function (arr, prop) {
+//   const result = [];
 
-// const key = 'age';
-// const obj = {
-//   name: 'Bobby',
-//   age: 15,
-// };
-
-// obj.eye = 'blue';
-// obj['sdfsf'] = '3456789';
-
-// obj[key] = 20;
-// console.log(obj[key]);
-// console.log(obj);
-
-// ---- this ----
-// const obj = {
-//   name: 'Bobby',
-//   age: 15,
-
-//   sayHello() {
-//     console.log(`Hello my name is ${this.name}`);
-//   },
-
-//   birthday() {
-//     this.age += 1;
-//   },
-// };
-
-// obj.sayHello();
-
-// console.log(obj.age);
-// obj.birthday();
-// console.log(obj.age);
-
-// -------------------------------------------
-// Example 1 - Основы обьектов
-// Напиши скрипт, который, для объекта user, последовательно:
-
-// добавляет поле mood со значением 'happy'
-// заменяет значение hobby на 'skydiving'
-// заменяет значение premium на false
-// выводит содержимое объекта user в формате ключ:значение используя Object.keys() и for...of
-
-// const user = {
-//   name: 'Mango',
-//   age: 20,
-//   hobby: 'html',
-//   premium: true,
-// };
-
-// user.mood = 'happy';
-// user.hobby = 'skydiving';
-// user.premium = false;
-
-// const keys = Object.keys(user);
-
-// for (const key of keys) {
-//   console.log(key, user[key]);
-// }
-
-// console.table(user);
-
-// -------------------------------------------
-// Example 2 - метод Object.values()
-// У нас есть объект, в котором хранятся зарплаты нашей команды.
-// Напишите код для суммирования всех зарплат и сохраните результат в переменной sum.
-// Должно получиться 390. Если объект salaries пуст, то результат должен быть 0.
-
-// const salaries = {
-//   John: 100,
-//   Ann: 160,
-//   Pete: 130,
-//   Bobby: 110,
-// };
-// const values = Object.values(salaries);
-// let sum = 0;
-
-// for (const value of values) {
-//   sum += value;
-// }
-
-// console.log(sum);
-
-// -------------------------------------------
-// Example 3 - Массив объектов
-// Напишите ф-цию calcTotalPrice(stones, stoneName), которая принимает массив обьектов и строку с названием камня. Ф-ция считает и возвращает общую стоимость камней с таким именем, ценой и количеством из обьекта
-
-// const stones = [
-//   { name: 'Изумруд', price: 1300, quantity: 4 }, // 5200
-//   { name: 'Бриллиант', price: 2700, quantity: 3 }, // 8100
-//   { name: 'Сапфир', price: 400, quantity: 7 }, // 2800
-//   { name: 'Щебень', price: 200, quantity: 2 }, // 400
-// ];
-
-// const calcTotalPrice = (stones, stoneName) => {
-//   for (const stone of stones) {
-//     if (stone.name === stoneName) {
-//       const result = stone.price * stone.quantity;
-
-//       return result;
+//   for (const obj of arr) {
+//     if (prop in obj) {
+//       result.push(obj[prop]);
 //     }
 //   }
 
-//   return 0;
+//   return result;
 // };
 
-// console.log(calcTotalPrice(stones, 'Изумруд'));
-// console.log(calcTotalPrice(stones, 'Бриллиант'));
-// console.log(calcTotalPrice(stones, 'Сапфир'));
-// console.log(calcTotalPrice(stones, 'Щебень'));
+// /*
+//  * Викличи функції для перевірки працездатності твоєї реалізації.
+//  */
+// console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроїд', 'Захоплення']
 
-// -------------------------------------------
-// Example 4 - Комплексные задачи
-// Напиши скрипт управления личным кабинетом интернет банка. Есть объект account в котором необходимо реализовать методы для работы с балансом и историей транзакций.
+// console.log(getAllPropValues(products, 'quantity')); // [4, 3, 7, 2]
 
-/*
- * Типов транзацкий всего два.
- * Можно положить либо снять деньги со счета.
- */
-const Transaction = {
-  DEPOSIT: 'deposit',
-  WITHDRAW: 'withdraw',
-};
+// console.log(getAllPropValues(products, 'category')); // []
 
-/*
- * Каждая транзакция это объект со свойствами: id, type и amount
- */
+// ----- callback function ------
+// function fn1(callback) {
+//   console.log('hello');
 
-const account = {
-  // Текущий баланс счета
-  balance: 0,
+//   callback();
+// }
 
-  // История транзакций
-  transactions: [],
+// function fn2() {
+//   console.log('world');
+// }
 
-  /*
-   * Метод создает и возвращает объект транзакции.
-   * Принимает сумму и тип транзакции.
-   */
-  createTransaction(amount, type) {
-    this.transactions.push({
-      id: this.transactions.length + 1,
-      amount,
-      type,
-    });
-  },
+// function fn3() {
+//   console.log('Nandor');
+// }
 
-  /*
-   * Метод отвечающий за добавление суммы к балансу.
-   * Принимает сумму танзакции.
-   * Вызывает createTransaction для создания объекта транзакции
-   * после чего добавляет его в историю транзакций
-   */
-  deposit(amount) {
-    this.balance += amount;
-    this.createTransaction(amount, Transaction.DEPOSIT);
-  },
+// fn1(fn2);
+// fn1(fn3);
 
-  /*
-   * Метод отвечающий за снятие суммы с баланса.
-   * Принимает сумму танзакции.
-   * Вызывает createTransaction для создания объекта транзакции
-   * после чего добавляет его в историю транзакций.
-   *
-   * Если amount больше чем текущий баланс, выводи сообщение
-   * о том, что снятие такой суммы не возможно, недостаточно средств.
-   */
-  withdraw(amount) {
-    if (amount > this.balance) {
-      console.error('no money, no honey');
-      return;
-    }
+// ------ map -------
+// const numbers = [1, 2, 3];
 
-    this.balance -= amount;
-    this.createTransaction(amount, Transaction.WITHDRAW);
-  },
+// const map = (arr, callback) => {
+//   const res = [];
 
-  /*
-   * Метод возвращает текущий баланс
-   */
-  getBalance() {
-    return this.balance;
-  },
+//   arr.forEach((item) => {
+//     res.push(callback(item));
+//   });
 
-  /*
-   * Метод ищет и возвращает объект транзации по id
-   */
-  getTransactionDetails(id) {
-    for (const transaction of this.transactions) {
-      if (transaction.id === id) {
-        return transaction;
-      }
-    }
-  },
+//   return res;
+// };
 
-  /*
-   * Метод возвращает количество средств
-   * определенного типа транзакции из всей истории транзакций
-   */
-  getTransactionTotal(type) {
-    let sum = 0;
+// console.log(map(numbers, (number) => number * 2)); // [2, 4, 6]
+// console.log(map(numbers, (number) => number * 3)); // [3, 6, 9]
+// console.log(map(numbers, (number) => number * 4)); // [4, 8, 12]
+// console.log(map(numbers, (item) => item * 10)); // [10, 20, 30]
 
-    for (const transaction of this.transactions) {
-      if (transaction.type === type) {
-        sum += transaction.amount;
-      }
-    }
+// console.log(map(['Bobby', 'Peter', 'Chris'], (name) => name.toUpperCase()));
+// console.log(map(['Bobby', 'Peter', 'Chris'], (name) => name.toLowerCase()));
 
-    return sum;
-  },
-};
+// ------ filter -------
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-console.log(account.getBalance());
+// const filter = (items, callback) => {
+//   const res = [];
 
-account.deposit(1000);
-console.log(account.getBalance());
+//   items.forEach((item) => {
+//     if (callback(item)) {
+//       res.push(item);
+//     }
+//   });
 
-account.withdraw(300);
-console.log(account.getBalance());
+//   return res;
+// };
 
-account.withdraw(600);
-console.log(account.getBalance());
+// console.log(filter(numbers, (number) => number < 4));
+// console.log(filter(numbers, (number) => number > 5));
+// console.log(filter(numbers, (number) => number > 4 && number < 8));
 
-account.withdraw(200);
-console.log(account.getBalance());
+// console.log(filter(['Bobby', 'Peter', 'Chris'], (name) => name.includes('e')));
+// console.log(
+//   filter(['Bobby', 'Peter', 'Chris', 'Elemer'], (name) => name.includes('e'))
+// );
 
-// console.table(account.transactions);
-console.log(account.getTransactionDetails(3));
-console.log(account.getTransactionTotal(Transaction.DEPOSIT));
-console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+// ----- find -----
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const users = [
+//   { name: 'Bobby', age: 12, eye: 'blue' },
+//   { name: 'Chris', age: 20, eye: 'brown' },
+//   { name: 'Peter', age: 25, eye: 'green' },
+// ];
+
+// const find = (items, callback) => {
+//   for (const item of items) {
+//     if (callback(item)) return item;
+//   }
+// };
+
+// console.log(find(numbers, (number) => number > 4));
+// console.log(find(numbers, (number) => number === 6));
+// console.log(find(numbers, (number) => number === 12));
+
+// console.log(find(users, (user) => user.name === 'Bobby'));
+// console.log(find(users, (user) => user.eye === 'green'));
+// console.log(find(users, (user) => user.dgdf === 'dfgfg'));
