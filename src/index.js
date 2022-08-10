@@ -199,24 +199,56 @@ console.log('module 04.2');
 // console.log(names);
 
 // ----- map ------
-const users = [
-  { name: 'Bobby', age: 20 },
-  { name: 'Andris', age: 13 },
-  { name: 'Nandor', age: 16 },
-  { name: 'Ándris', age: 13 },
-  { name: 'apple', age: 13 },
-  { name: 'ape', age: 13 },
-  { name: 'Cecil', age: 13 },
-  { name: 'Csaba', age: 13 },
-];
+// const users = [
+//   { name: 'Bobby', age: 20 },
+//   { name: 'Andris', age: 13 },
+//   { name: 'Nandor', age: 16 },
+//   { name: 'Ándris', age: 13 },
+//   { name: 'apple', age: 13 },
+//   { name: 'ape', age: 13 },
+//   { name: 'Cecil', age: 13 },
+//   { name: 'Csaba', age: 13 },
+// ];
 
-const updatedAges = users.map((user) => {
-  const newUser = {
-    ...user,
-    age: user.age + 1,
-  };
+// const updatedAges = users.map((user) => {
+//   const newUser = {
+//     ...user,
+//     age: user.age + 1,
+//   };
 
-  return newUser;
-});
+//   return newUser;
+// });
 
-console.log(updatedAges);
+// console.log(updatedAges);
+
+// ======= unique items v.1 ========
+// [1, 3, 2, 4, 5]
+//               0  1  2  3  4  5  6  7  8  9 ...
+// const numbers = [1, 3, 1, 2, 3, 4, 2, 1, 5, 4, 2, 3, 1, 5, 4, 1, 3, 2];
+// const uniqueNumbers = [];
+
+// numbers.forEach((number) => {
+//   if (!uniqueNumbers.includes(number)) {
+//     uniqueNumbers.push(number);
+//   }
+// });
+
+// console.log(uniqueNumbers);
+
+// ======= unique items v.2 ========
+// [1, 3, 2, 4, 5]
+//               0  1  2  3  4  5  6  7  8  9 ...
+// const numbers = [1, 3, 1, 2, 3, 4, 2, 1, 5, 4, 2, 3, 1, 5, 4, 1, 3, 2];
+// const uniqueNumbers = numbers.filter(
+//   (number, idx) => numbers.indexOf(number) === idx
+// );
+
+// console.log(uniqueNumbers);
+
+// ======= unique items v.3 ========
+// [1, 3, 2, 4, 5]
+//               0  1  2  3  4  5  6  7  8  9 ...
+// const numbers = [1, 3, 1, 2, 3, 4, 2, 1, 5, 4, 2, 3, 1, 5, 4, 1, 3, 2];
+// const uniqueNumbers = Array.from(new Set(numbers));
+
+// console.log(uniqueNumbers);
